@@ -1,7 +1,8 @@
 LIB_PATH=/usr/local/lib/python3.6/site-packages/cv2.cpython-36m-x86_64-linux-gnu.so
 VENV=$(shell ${HOME}/.local/bin/pipenv --venv)
 VENV_LIB_PATH=${VENV}/lib/python3.6/cv2.so
-IRIS_URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+IRIS_URL="https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+RAW_DATA="/home/mirror/PycharmProjects/tapway-ai-experiment/vehicle-tracking-features/video/0 - 2018-10-23 08-29-18-592.mov"
 
 opencv:
 	# link manually builded cv2
@@ -11,11 +12,11 @@ opencv:
 venv: opencv
 	${HOME}/.local/bin/pipenv install -r requirements.txt
 
-.PHONY: all clean test opencv venv external
+.PHONY: all clean test opencv venv external interim
 
 #all: reports/figures/exploratory.png models/random_forest.model
 
-all: external
+all: external raw interim
 
 external: data/external/yolo.h5 \
 	data/external/squeezenet_weights_tf_dim_ordering_tf_kernels.h5 \
@@ -24,6 +25,17 @@ external: data/external/yolo.h5 \
 	data/external/DenseNet-BC-121-32.h5 \
 	data/external/yolo-tiny.h5 \
 	data/external/resnet50_coco_best_v2.0.1.h5
+
+raw: data/raw/road_camera_1920x1080_60fps.mov
+
+interim: data/interim/road_camera_1920x1080_24fps.mp4
+
+# only 5 minutes
+data/interim/road_camera_1920x1080_24fps.mp4:
+	ffmpeg -i data/raw/road_camera_1920x1080_60fps.mov -c:v libx264 -t 00:05:00 -r 24 data/interim/road_camera_1920x1080_24fps.mp4
+
+data/raw/road_camera_1920x1080_60fps.mov:
+	ln -s ${RAW_DATA} data/raw/road_camera_1920x1080_60fps.mov
 
 data/external/squeezenet_weights_tf_dim_ordering_tf_kernels.h5:
 	wget https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/squeezenet_weights_tf_dim_ordering_tf_kernels.h5 \
@@ -55,7 +67,7 @@ data/external/resnet50_coco_best_v2.0.1.h5:
 
 
 clean:
-	rm -f data/raw/*.csv
+#	rm -f data/raw/*.csv
 	rm -f data/processed/*.pickle
 	rm -f data/processed/*.csv
 	rm -f reports/figures/*.png
