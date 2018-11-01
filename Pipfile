@@ -1,0 +1,33 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+ipython = "*"
+jupyter-console = "*"
+jupyter = "*"
+seaborn = "*"
+moviepy = "*"
+ipywidgets = "*"
+watermark = "*"
+pytest = "*"
+
+[packages]
+tensorflow = "*"
+scipy = "*"
+matplotlib = "*"
+"h5py" = "*"
+imutils = "*"
+imageai = {file = "https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.2/imageai-2.0.2-py3-none-any.whl"}
+Pillow = "*"
+Keras = "*"
+ipython = "==5"
+jupyter = "*"
+click = "*"
+black = "*"
+requests = "*"
+sklearn = "*"
+
+[requires]
+python_version = "3.6"
