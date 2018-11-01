@@ -28,11 +28,19 @@ external: data/external/yolo.h5 \
 
 raw: data/raw/road_camera_1920x1080_60fps.mov
 
-interim: data/interim/road_camera_1920x1080_24fps.mp4
+interim: data/interim/road_camera_640x480_0-17.jpeg
 
 # only 5 minutes
-data/interim/road_camera_1920x1080_24fps.mp4:
-	ffmpeg -i data/raw/road_camera_1920x1080_60fps.mov -c:v libx264 -t 00:05:00 -r 24 data/interim/road_camera_1920x1080_24fps.mp4
+data/interim/road_camera_1920x1080_24fps.mp4: data/raw/road_camera_1920x1080_60fps.mov
+	ffmpeg -i $< \
+	-y -c:v libx264 -t 00:05:00 -r 24 $@
+
+data/interim/road_camera_640x480_24fps.mp4: data/interim/road_camera_1920x1080_24fps.mp4
+	ffmpeg -i $< \
+	-y -vf scale=-2:480 -crf 18 -c:v libx264 -t 00:05:00 -r 24 $@
+
+data/interim/road_camera_640x480_0-17.jpeg: data/interim/road_camera_640x480_24fps.mp4
+	ffmpeg -y -ss 17 -i $< -vframes 1 -q:v 2 $@
 
 data/raw/road_camera_1920x1080_60fps.mov:
 	ln -s ${RAW_DATA} data/raw/road_camera_1920x1080_60fps.mov

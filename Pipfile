@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-ipython = "*"
 jupyter-console = "*"
 jupyter = "*"
 seaborn = "*"
@@ -12,6 +11,7 @@ moviepy = "*"
 ipywidgets = "*"
 watermark = "*"
 pytest = "*"
+black = "*"
 
 [packages]
 tensorflow = "*"
@@ -22,12 +22,12 @@ imutils = "*"
 imageai = {file = "https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.2/imageai-2.0.2-py3-none-any.whl"}
 Pillow = "*"
 Keras = "*"
-ipython = "==5"
 jupyter = "*"
 click = "*"
-black = "*"
 requests = "*"
 sklearn = "*"
+ipython = "*"
+attrs = "*"
 
 [requires]
 python_version = "3.6"
