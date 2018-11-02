@@ -8,7 +8,8 @@ Based on:
 Coming soon
 
 ##### Additional reading
-
+- Links in first paragraph :)
+- [Comprehensive Beginner’s Guide to Jupyter Notebooks](https://www.analyticsvidhya.com/blog/2018/05/starters-guide-jupyter-notebook/)
 - [Automation and Make: Running Make](http://swcarpentry.github.io/make-novice/reference)
 - [Makefile Variables](https://adamcod.es/2016/11/15/makefile-variables.html)
 - [make manual](https://www.gnu.org/software/make/manual/html_node/Make-Control-Functions.html)
