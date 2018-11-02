@@ -4,7 +4,7 @@ import time
 import attr
 from imageai.Detection import ObjectDetection
 
-PROJECT_ROOT = "/home/mirror/PycharmProjects/ImageAI-opencv"
+PROJECT_ROOT = f'{os.path.dirname(os.path.abspath(__file__))}/../../'
 
 
 @attr.s
