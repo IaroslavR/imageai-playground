@@ -16,12 +16,12 @@ libs16:
 	sudo apt-get install build-essential cmake pkg-config libjpeg8-dev \
         libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev \
         libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev \
-        libatlas-base-dev gfortran -y
+        libatlas-base-dev gfortran ffmpeg -y
 
 # Placeholder, for 18.04 packages look into
 # https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv
 libs18:
-	sudo apt-get install build-essential cmake pkg-config
+	sudo apt-get install build-essential cmake pkg-config ffmpeg -y
 
 clean:
 	rm -rf ${OPENCV_PATH}
