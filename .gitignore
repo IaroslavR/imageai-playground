@@ -1,7 +1,8 @@
 .idea/
 /data/
-.ipynb_checkpoints/
 .pytest_cache
 __temp__.*
 __pycache__/
 *.pyc
+tmp*
+*.log

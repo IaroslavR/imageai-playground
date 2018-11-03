@@ -8,9 +8,7 @@ from data.preprocess import read_processed_data
 
 
 @click.command()
-@click.argument(
-    "input_file", type=click.Path(exists=True, dir_okay=False)
-)
+@click.argument("input_file", type=click.Path(exists=True, dir_okay=False))
 @click.argument("output_file", type=click.Path(writable=True, dir_okay=False))
 def main(input_file, output_file):
     print("Training model")
