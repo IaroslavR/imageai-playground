@@ -1,0 +1,4 @@
+*
+!.gitignore
+!base.ipynb
+!object_detection.ipynb
